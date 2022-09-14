@@ -9,7 +9,7 @@
 		<h1>Error</h1>
 		<?php include '../views/components/menu.php';?>
 		
-		<h2>Error en la operación solicitada</h2>
+		<h2>Error en la operaciÃ³n solicitada</h2>
 
 		<p class='error'><?=$mensaje?></p>
 		

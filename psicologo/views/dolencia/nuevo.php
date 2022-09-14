@@ -13,7 +13,7 @@
 		<form method="post" action="index.php?c=dolencia&m=store">
 			<label>Nombre</label>
 			<input type="text" name="nombre"><br>
-			<label>Descripción</label>
+			<label>DescripciÃ³n</label>
 			<input type="text" name="descripcion"><br>
 			<label>Tratamiento</label>
 			<input type="text" name="tratamiento"><br>

@@ -13,7 +13,7 @@
 		<h3><?=$dolencia->nombre?></h3>
 		
 		<p><b>Nombre:</b> <?=$dolencia->nombre?></p>
-		<p><b>Descripción:</b> <?=$dolencia->descripcion?></p>
+		<p><b>DescripciÃ³n:</b> <?=$dolencia->descripcion?></p>
 		<p><b>Tratamiento:</b> <?=$dolencia->tratamiento?></p>
 		
 		<a href='index.php?c=dolencia&m=edit&p=<?=$dolencia->id?>'>Editar dolencia</a> -

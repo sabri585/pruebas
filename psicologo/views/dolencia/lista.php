@@ -6,7 +6,7 @@
 		<link rel="stylesheet" type="text/css" href="css/estilo.css">
 	</head>
 	<body>
-		<h1>Dolencias del Psicólogo</h1>
+		<h1>Dolencias del PsicÃ³logo</h1>
 		<?php include '../views/components/menu.php';?>
 		
 		<h2>Lista de dolencias</h2>
@@ -14,7 +14,7 @@
 		<table border="1">
 			<tr>
 				<th>Nombre</th>
-				<th>Descripción</th>
+				<th>Descripciï¿½n</th>
 				<th>Tratamiento</th>
 			</tr>
 			<?php foreach ($dolencias as $dolencia){

@@ -9,7 +9,7 @@
 		<h1>Confirmar borrado</h1>
 		<?php include '../views/components/menu.php';?>
 		
-		<h2>Formulario de confirmación</h2>
+		<h2>Formulario de confirmaciÃ³n</h2>
 		
 		<form method="post" action="index.php?c=dolencia&m=destroy">
 			<p>Confirmar el borrado de la dolencia <?=$dolencia->nombre?>.</p>

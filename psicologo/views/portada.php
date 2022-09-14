@@ -9,7 +9,7 @@
 		<h1>Portada</h1>
 		<?php include '../views/components/menu.php';?>
 		
-		<h2>Bienvenido a nuestra aplicación</h2>
-		<p>Esta es una aplicación de prueba para comprender el MVC.</p>
+		<h2>Bienvenido a nuestra aplicaciÃ³n</h2>
+		<p>Esta es una aplicaciÃ³n de prueba para comprender el MVC.</p>
 	</body>
 </html>

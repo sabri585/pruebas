@@ -10,8 +10,8 @@
 		<h2><?=$dolencia->nombre?></h2>
 		<?php include '../views/components/menu.php';?>
 		
-		<h2>Formulario de edición</h2>
-		<!-- Muestra los mensajes con los detalles de la operación "update" -->
+		<h2>Formulario de ediciÃ³n</h2>
+		<!-- Muestra los mensajes con los detalles de la operaciÃ³n "update" -->
 		<?=empty($GLOBALS['success'])? "" : "<p style='color:#060'>". $GLOBALS['success']."</p>"?>
 		<?=empty($GLOBALS['error'])? "" : "<p style='color:#600'>". $GLOBALS['error']."</p>"?>
 		
@@ -23,7 +23,7 @@
 			<!-- resto del formulario -->
 			<label>Nombre</label>
 			<input type="text" name="nombre" value="<?=$dolencia->nombre?>"><br>
-			<label>Descripción</label>
+			<label>DescripciÃ³n</label>
 			<input type="text" name="descripcion" value="<?=$dolencia->descripcion?>"><br>
 			<label>Tratamiento</label>
 			<input type="text" name="tratamiento" value="<?=$dolencia->tratamiento?>"><br>

@@ -1,22 +1,22 @@
 <?php
 // FICHERO config.php
 
-// PARÁMETROS DE CONFIGURACIÓN DEL AUTOLOAD
+// PARï¿½METROS DE CONFIGURACIï¿½N DEL AUTOLOAD
 $classmap = ['../controller','../model', '../libraries'];
 
-// TÍTULO DE LA APP
-define('APP_TITLE','Gestión Psicólogo');
+// Tï¿½TULO DE LA APP
+define('APP_TITLE','GestiÃ³n PsicÃ³logo');
 
-// PARÁMETROS DE CONFIGURACION DE LA BDD
+// PARï¿½METROS DE CONFIGURACION DE LA BDD
 define('DB_HOST','localhost');  // host
 define('DB_USER','root');       // usuario
 define('DB_PASS','');           // password
 define('DB_NAME','psicologo'); // base de datos
-define('DB_CHARSET','utf8');    // codificación
+define('DB_CHARSET','utf8');    // codificaciï¿½n
 
-// conector que debe usar PDO,solamente si hemos visto PDO además de mysqli
-// (dependerá del curso)
-define('DB_CLASS','DBPDO'); // clase que usará el modelo (DB o DBPDO)
+// conector que debe usar PDO,solamente si hemos visto PDO ademï¿½s de mysqli
+// (dependerï¿½ del curso)
+define('DB_CLASS','DBPDO'); // clase que usarÃ¡ el modelo (DB o DBPDO)
 define('SGDB','mysql');     // driver que debe usar PDO (solo para DBPDO)
 
 // CONTROLADOR Y METODO POR DEFECTO
@@ -24,4 +24,4 @@ define('DEFAULT_CONTROLLER', 'Welcome');
 define('DEFAULT_METHOD', 'index');
 
 // OTROS PARAMETROS
-define('DEBUG', true); // para depuración
+define('DEBUG', true); // para depuraciÃ³n
