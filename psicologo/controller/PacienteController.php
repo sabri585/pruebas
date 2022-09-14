@@ -15,7 +15,7 @@ class PacienteController {
     
     //método para mostrar los detalles de un paciente
     public function show(int $id=0){
-        //comprobar que recibimos el id del libro por parámetro
+        //comprobar que recibimos el id del paciente por parámetro
         if (!$id) {
             throw new Exception("No se indicó el paciente");
         }
@@ -23,7 +23,7 @@ class PacienteController {
         //recuperar el paciente con dicho código
         $paciente = Paciente::getById($id);
         
-        //comprobar que el libro se haya recuperado correctamente de la BDD
+        //comprobar que el paciente se haya recuperado correctamente de la BDD
         if (!$paciente) {
             throw new Exception("No se ha encontrado el paciente $id");
         }
@@ -33,12 +33,12 @@ class PacienteController {
     }
     
     //método para guardar un nuevo paciente
-    //PASO 1: muestra el formulario de nuevo libro
+    //PASO 1: muestra el formulario de nuevo paciente
     public function create(){
         include '../views/paciente/nuevo.php';
     }
     
-    //PASO 2: guarda el nuevo libro
+    //PASO 2: guarda el nuevo paciente
     public function store(){
         //comprueba que llegue el formulario con los datos
         if (empty($_POST['guardar'])) {
@@ -91,8 +91,71 @@ class PacienteController {
         $paciente = Paciente::getById($id); //recupera el paciente desde la BDD
         
         if (!$paciente) {
-            throw new Exception("No se encontrado el libro $id.");
+            throw new Exception("No se encontrado el paciente $id.");
         }
+        
+        //recuperar el resto de campos
+        $paciente->dni = $_POST['dni'];
+        $paciente->nombre = $_POST['nombre'];
+        $paciente->apellidos = $_POST['apellidos'];
+        $paciente->poblacion = $_POST['poblacion'];
+        
+        try {
+            $paciente->actualizar(); //actualiza en BDD, si falla lanza excepción.
+            $GLOBALS['success'] = "Actualización del paciente $paciente->nombre $paciente->apellidos correcta.";
+            
+        } catch (Exception $e) {
+            $GLOBALS['error'] = "No se pudo actualizar el $paciente->nombre $paciente->apellidos.";
+        
+        } finally {
+            //repite la operación edit, así mantendrá al usuario en la vista de edición.
+            $this->edit($paciente->id);
+        }
+        
+        //NOTA 1: pongo los mensajes globales para disponer de ellos en las vistas
+        //NOTA 2: cuando hagas pruebas, prueba a cambiar el edit por "show" o "list"...
     }
     
+    //método para eliminar un paciente
+    //Eliminar se hace en 2 pasos si queremos hacerlo con formulario de confirmación
+    //PASO 1: muestra el formulario de confirmación de eliminación
+    public function delete(int $id=0){
+        
+        //comprueba que me llega el identificador
+        if (!$id){
+            throw new Exception('No se indicó el paciente a borrar.');
+        }
+        
+        //recupera el paciente con dicho identificador
+        $paciente = Paciente::getById($id);
+        
+        //comprueba que el paciente existe
+        if (!$paciente){
+            throw new Exception("No existe el paciente $id ");
+        }
+        
+        //ir al formulario de confirmación
+        include '../views/paciente/borrar.php';
+    }
+    
+    //PASO 2: elimina el paciente
+    public function destroy(){
+        
+        //comprueba que llegue el formulario de confirmación
+        if (empty($_POST['borrar'])) {
+            throw new Exception('No se recibió confirmación');
+        }
+        
+        //recupera el identificador vía POST
+        $id = intval($_POST['id']);
+        
+        //intenta borrar el paciente de la BDD
+        if (Paciente::borrar($id)===FALSE) {
+            throw new Exception('No se pudo borrar');
+        }
+        
+        //muestra la vista de éxito
+        $mensaje="Borrado del paciente $id correcto.";
+        include '../views/exito.php'; //mostrar éxito
+    }
 }

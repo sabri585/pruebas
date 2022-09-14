@@ -17,7 +17,7 @@
 		
 		<form method="post" action="index.php?c=paciente&m=update">
 		
-			<!-- input oculto que contiene el ID del libro a actualizar -->
+			<!-- input oculto que contiene el ID del paciente a actualizar -->
 			<input type="hidden" name="id" value="<?=$paciente->id?>">
 			
 			<!-- resto del formulario -->
