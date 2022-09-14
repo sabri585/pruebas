@@ -6,7 +6,7 @@
 		<link rel="stylesheet" type="text/css" href="css/estilo.css">
 	</head>
 	<body>
-		<h1>Pacientes del Psic�logo</h1>
+		<h1>Pacientes del Psicólogo</h1>
 		<?php include '../views/components/menu.php';?>
 		
 		<h2>Lista de pacientes</h2>
@@ -16,7 +16,8 @@
 				<th>DNI</th>
 				<th>Nombre</th>
 				<th>Apellidos</th>
-				<th>Poblaci�n</th>
+				<th>Población</th>
+				<th>Dolencia</th>
 			</tr>
 			<?php foreach ($pacientes as $paciente){
 			    echo "<tr>";
@@ -24,10 +25,12 @@
 			    echo "<td>$paciente->nombre</td>";
 			    echo "<td>$paciente->apellidos</td>";
 			    echo "<td>$paciente->poblacion</td>";
+			    echo "<td>$paciente->dolencia</td>";
 			    echo "<td>";
-			    echo " <a href='index.php?c=paciente&m=show&p=$paciente->id'>Ver</a>";
-			    echo " <a href='index.php?c=paciente&m=edit&p=$paciente->id'>Editar</a>";
-			    echo " <a href='index.php?c=paciente&m=delete&p=$paciente->id'>Borrar</a>";
+			    echo " <a href='/paciente/show/$paciente->id'>Ver</a>";
+			    echo " <a href='/paciente/edit/$paciente->id'>Editar</a>";
+			    echo " <a href='/paciente/delete/$paciente->id'>Borrar</a>";
+			    //Añadir cita desde aquí
 			    echo "</td>";
 			    echo "</tr>";
 			}?>

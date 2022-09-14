@@ -7,33 +7,44 @@
 	</head>
 	<body>
 		<h1>Actualizar paciente</h1>
-		<h2><?=$paciente->nombre, $paciente->apellidos?></h2>
+		<h2><?=$paciente->nombre.' '.$paciente->apellidos?></h2>
 		<?php include '../views/components/menu.php';?>
 		
-		<h2>Formulario de edici髇</h2>
-		<!-- Muestra los mensajes con los detalles de la operaci髇 "update" -->
+		<h2>Formulario de edici贸n</h2>
+		<!-- Muestra los mensajes con los detalles de la operaci贸n "update" -->
 		<?=empty($GLOBALS['success'])? "" : "<p style='color:#060'>". $GLOBALS['success']."</p>"?>
 		<?=empty($GLOBALS['error'])? "" : "<p style='color:#600'>". $GLOBALS['error']."</p>"?>
 		
-		<form method="post" action="index.php?c=paciente&m=update">
+		<form method="post" action="/paciente/update">
 		
 			<!-- input oculto que contiene el ID del paciente a actualizar -->
 			<input type="hidden" name="id" value="<?=$paciente->id?>">
 			
 			<!-- resto del formulario -->
+			<h2>Informaci贸n del paciente</h2>
 			<label>DNI</label>
 			<input type="text" name="dni" value="<?=$paciente->dni?>"><br>
 			<label>Nombre</label>
 			<input type="text" name="nombre" value="<?=$paciente->nombre?>"><br>
 			<label>Apellidos</label>
 			<input type="text" name="apellidos" value="<?=$paciente->apellidos?>"><br>
-			<label>Poblaci髇</label>
+			<label>Poblaci贸n</label>
 			<input type="text" name="poblacion" value="<?=$paciente->poblacion?>"><br>
+			
+			<h2>Informaci贸n de las dolencias del paciente</h2>
+			<label>Grado</label>
+			<input type="text" name="grado" value="<?=$paciente->grado?>"><br>
+			<label>Dolencia</label>
+			<input type="text" name="dolencia" value="<?=$paciente->dolencia?>"><br>
+			<label>Estado</label>
+			<input type="text" name="poblacion" value="<?=$paciente->estado?>"><br>
+			<label>Tratamiento</label>
+			<input type="text" name="poblacion" value="<?=$paciente->tratamiento?>"><br>
 			
 			<input type="submit" name="actualizar" value="Actualizar">
 		</form>
 		
-		<a href='index.php?c=paciente&m=show&p=<?=$paciente->id?>'>Detalles</a> -
-		<a href='index.php?c=paciente'>Volver al listado</a>
+		<a href='/paciente/show/<?=$paciente->id?>'>Detalles</a> -
+		<a href='/paciente'>Volver al listado</a>
 	</body>
 </html>

@@ -4,24 +4,24 @@ class PacienteController {
         $this->list(); //redirige a la lista de pacientes
     }
     
-    //operación para listar todos los pacientes
+    //operaciÃ³n para listar todos los pacientes
     public function list(){
         //recuperar la lista de pacientes
-        $pacientes = Paciente::get();
+        $pacientes = V_paciente::get();
         
         //cargar la vista que muestra el listado
         include '../views/paciente/lista.php';
     }
     
-    //método para mostrar los detalles de un paciente
+    //mÃ©todo para mostrar los detalles de un paciente
     public function show(int $id=0){
-        //comprobar que recibimos el id del paciente por parámetro
+        //comprobar que recibimos el id del paciente por parÃ¡metro
         if (!$id) {
-            throw new Exception("No se indicó el paciente");
+            throw new Exception("No se indicÃ³ el paciente");
         }
         
-        //recuperar el paciente con dicho código
-        $paciente = Paciente::getById($id);
+        //recuperar el paciente con dicho cÃ³digo
+        $paciente = V_paciente::getById($id);
         
         //comprobar que el paciente se haya recuperado correctamente de la BDD
         if (!$paciente) {
@@ -32,7 +32,7 @@ class PacienteController {
         include '../views/paciente/detalles.php';
     }
     
-    //método para guardar un nuevo paciente
+    //mÃ©todo para guardar un nuevo paciente
     //PASO 1: muestra el formulario de nuevo paciente
     public function create(){
         include '../views/paciente/nuevo.php';
@@ -53,18 +53,18 @@ class PacienteController {
         $paciente->apellidos = $_POST['apellidos'];
         $paciente->poblacion = $_POST['poblacion'];
         
-        $paciente->guardar(); //guarda el paciente en BDD (si falla lanza excepción)
+        $paciente->guardar(); //guarda el paciente en BDD (si falla lanza excepciï¿½n)
         
         $mensaje="Guardado del paciente $paciente->nombre $paciente->apellidos correcto.";
-        include '../views/exito.php'; //muestra la vista de éxito
+        include '../views/exito.php'; //muestra la vista de ï¿½xito
     }
     
-    //método para actualizar un paciente
-    //PASO 1: muestra el formulario de edición de un paciente
+    //mï¿½todo para actualizar un paciente
+    //PASO 1: muestra el formulario de ediciï¿½n de un paciente
     public function edit(int $id=0){
         //comprueba que llega el id del paciente a editar
         if (!$id){
-            throw new Exception("No se indicó el paciente");
+            throw new Exception("No se indicï¿½ el paciente");
         }
         
         //recupera el paciente con dicho identificador
@@ -87,7 +87,7 @@ class PacienteController {
             throw new Exception('No se recibieron datos');
         }
         
-        $id= intval($_POST['id']); //recuperar el id vía POST
+        $id= intval($_POST['id']); //recuperar el id vï¿½a POST
         $paciente = Paciente::getById($id); //recupera el paciente desde la BDD
         
         if (!$paciente) {
@@ -101,14 +101,14 @@ class PacienteController {
         $paciente->poblacion = $_POST['poblacion'];
         
         try {
-            $paciente->actualizar(); //actualiza en BDD, si falla lanza excepción.
-            $GLOBALS['success'] = "Actualización del paciente $paciente->nombre $paciente->apellidos correcta.";
+            $paciente->actualizar(); //actualiza en BDD, si falla lanza excepciï¿½n.
+            $GLOBALS['success'] = "Actualizaciï¿½n del paciente $paciente->nombre $paciente->apellidos correcta.";
             
         } catch (Exception $e) {
             $GLOBALS['error'] = "No se pudo actualizar el $paciente->nombre $paciente->apellidos.";
         
         } finally {
-            //repite la operación edit, así mantendrá al usuario en la vista de edición.
+            //repite la operaciï¿½n edit, asï¿½ mantendrï¿½ al usuario en la vista de ediciï¿½n.
             $this->edit($paciente->id);
         }
         
@@ -116,14 +116,14 @@ class PacienteController {
         //NOTA 2: cuando hagas pruebas, prueba a cambiar el edit por "show" o "list"...
     }
     
-    //método para eliminar un paciente
-    //Eliminar se hace en 2 pasos si queremos hacerlo con formulario de confirmación
-    //PASO 1: muestra el formulario de confirmación de eliminación
+    //mï¿½todo para eliminar un paciente
+    //Eliminar se hace en 2 pasos si queremos hacerlo con formulario de confirmaciï¿½n
+    //PASO 1: muestra el formulario de confirmaciï¿½n de eliminaciï¿½n
     public function delete(int $id=0){
         
         //comprueba que me llega el identificador
         if (!$id){
-            throw new Exception('No se indicó el paciente a borrar.');
+            throw new Exception('No se indicï¿½ el paciente a borrar.');
         }
         
         //recupera el paciente con dicho identificador
@@ -134,19 +134,19 @@ class PacienteController {
             throw new Exception("No existe el paciente $id ");
         }
         
-        //ir al formulario de confirmación
+        //ir al formulario de confirmaciï¿½n
         include '../views/paciente/borrar.php';
     }
     
     //PASO 2: elimina el paciente
     public function destroy(){
         
-        //comprueba que llegue el formulario de confirmación
+        //comprueba que llegue el formulario de confirmaciï¿½n
         if (empty($_POST['borrar'])) {
-            throw new Exception('No se recibió confirmación');
+            throw new Exception('No se recibiï¿½ confirmaciï¿½n');
         }
         
-        //recupera el identificador vía POST
+        //recupera el identificador vï¿½a POST
         $id = intval($_POST['id']);
         
         //intenta borrar el paciente de la BDD
@@ -154,8 +154,8 @@ class PacienteController {
             throw new Exception('No se pudo borrar');
         }
         
-        //muestra la vista de éxito
+        //muestra la vista de ï¿½xito
         $mensaje="Borrado del paciente $id correcto.";
-        include '../views/exito.php'; //mostrar éxito
+        include '../views/exito.php'; //mostrar ï¿½xito
     }
 }

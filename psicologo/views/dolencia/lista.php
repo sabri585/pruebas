@@ -6,7 +6,7 @@
 		<link rel="stylesheet" type="text/css" href="css/estilo.css">
 	</head>
 	<body>
-		<h1>Dolencias del Psicólogo</h1>
+		<h1>Dolencias del Paciente</h1>
 		<?php include '../views/components/menu.php';?>
 		
 		<h2>Lista de dolencias</h2>

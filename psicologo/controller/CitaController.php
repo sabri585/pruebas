@@ -7,7 +7,7 @@ class CitaController {
     //operación para listar todas las citas
     public function list(){
         //recuperar la lista de citas
-        $citas = Cita::get();
+        $citas = V_cita::get();
         
         //cargar la vista que muestra el listado
         include '../views/cita/lista.php';
@@ -21,7 +21,7 @@ class CitaController {
         }
         
         //recuperar la cita con dicho código
-        $cita = Cita::getById($id);
+        $cita = V_cita::getById($id);
         
         //comprobar que la cita se haya recuperado correctamente de la BDD
         if (!$cita) {
@@ -34,7 +34,11 @@ class CitaController {
     
     //método para guardar una nueva cita
     //PASO 1: muestra el formulario de nueva cita
-    public function create(){
+    public function create($id){
+        
+        Paciente::getById($id);
+        $pacientes = Paciente::get();
+        
         include '../views/cita/nuevo.php';
     }
     
@@ -48,17 +52,18 @@ class CitaController {
         $cita = new Cita(); //crea una nueva cita
         
         //recupera los datos del formulario que llegan por POST
-        $cita->nombre = $_POST['nombre'];
-        $cita->descripcion = $_POST['descripcion'];
-        $cita->tratamiento = $_POST['tratamiento'];
+        $cita->fecha = $_POST['fecha'];
+        $cita->hora = $_POST['hora'];
+        $cita->duracion = $_POST['duracion'];
+        $cita->idpaciente = $_POST['idpaciente'];
         
         $cita->guardar(); //guarda la cita en BDD (si falla lanza excepción)
         
-        $mensaje="Guardado de la cita $cita->nombre correcto.";
+        $mensaje="Guardado de la cita $cita->fecha $cita->idpaciente correcto.";
         include '../views/exito.php'; //muestra la vista de éxito
     }
     
-    //m�todo para actualizar una cita
+    //método para actualizar una cita
     //PASO 1: muestra el formulario de edici�n de una cita
     public function edit(int $id=0){
         //comprueba que llega el id de la cita a editar
@@ -94,16 +99,16 @@ class CitaController {
         }
         
         //recuperar el resto de campos
-        $cita->nombre = $_POST['nombre'];
-        $cita->descripcion = $_POST['descripcion'];
-        $cita->tratamiento = $_POST['tratamiento'];
+        $cita->fecha = $_POST['fecha'];
+        $cita->hora = $_POST['hora'];
+        $cita->duracion = $_POST['duracion'];
         
         try {
             $cita->actualizar(); //actualiza en BDD, si falla lanza excepción.
-            $GLOBALS['success'] = "Actualización de la cita $cita->nombre correcta.";
+            $GLOBALS['success'] = "Actualización de la cita correcta.";
             
         } catch (Exception $e) {
-            $GLOBALS['error'] = "No se pudo actualizar la cita $cita->nombre.";
+            $GLOBALS['error'] = "No se pudo actualizar la cita.";
             
         } finally {
             //repite la operación edit, así mantendrá al usuario en la vista de edición.

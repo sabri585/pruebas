@@ -15,7 +15,7 @@
 		<?=empty($GLOBALS['success'])? "" : "<p style='color:#060'>". $GLOBALS['success']."</p>"?>
 		<?=empty($GLOBALS['error'])? "" : "<p style='color:#600'>". $GLOBALS['error']."</p>"?>
 		
-		<form method="post" action="index.php?c=dolencia&m=update">
+		<form method="post" action="/dolencia/update">
 		
 			<!-- input oculto que contiene el ID de la dolencia a actualizar -->
 			<input type="hidden" name="id" value="<?=$dolencia->id?>">
@@ -31,7 +31,7 @@
 			<input type="submit" name="actualizar" value="Actualizar">
 		</form>
 		
-		<a href='index.php?c=dolencia&m=show&p=<?=$dolencia->id?>'>Detalles</a> -
-		<a href='index.php?c=dolencia'>Volver al listado</a>
+		<a href='/dolencia/show/<?=$dolencia->id?>'>Detalles</a> -
+		<a href='/dolencia'>Volver al listado</a>
 	</body>
 </html>

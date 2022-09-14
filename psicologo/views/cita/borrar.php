@@ -11,13 +11,13 @@
 		
 		<h2>Formulario de confirmación</h2>
 		
-		<form method="post" action="/dolencia/destroy">
-			<p>Confirmar el borrado de la dolencia <?=$dolencia->nombre?>.</p>
+		<form method="post" action="/cita/destroy">
+			<p>Confirmar el borrado de la cita <?=$cita->id, $cita->fecha?>.</p>
 			
-			<input type="hidden" name="id" value="<?=$dolencia->id?>">
+			<input type="hidden" name="id" value="<?=$cita->id?>">
 			<input type="submit" name="borrar" value="Borrar">
 		</form>
 		
-		<a href='/dolencia/list'>Volver al listado</a>
+		<a href='/cita/list'>Volver al listado</a>
 	</body>
 </html>

@@ -2,7 +2,7 @@
 <html lang="es">
 	<head>
 		<meta charset="UTF-8">
-		<title>�xito - <?=APP_TITLE?></title>
+		<title>Éxito - <?=APP_TITLE?></title>
 		<link rel="stylesheet" type="text/css" href="css/estilo.css">
 	</head>
 	<body>
